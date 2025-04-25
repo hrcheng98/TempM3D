@@ -1,0 +1,101 @@
+random_seed: 222
+
+dataset:
+#  type: 'kitti'
+  type: 'waymo'
+  data_dir: 'KITTI_pvc'
+  root_dir: '/pvc_user/pengliang/GUPNet_master/GUPNet-main'
+  batch_size: 16
+#  batch_size: 32
+#  batch_size: 1
+#  batch_size: 4
+#  batch_size: 8
+  class_merging: False
+  use_dontcare: False
+  use_3d_center: True
+  writelist: ['Car']
+  random_flip: 0.5
+  random_crop: 0.5
+#  random_crop: -0.1
+  scale: 0.4
+  shift: 0.1
+
+model:
+  type: 'gupnet'
+  backbone: 'dla34'
+  neck: 'DLAUp'
+
+optimizer:
+  type: 'adam'
+  lr: 0.00125
+  weight_decay: 0.00001
+
+lr_scheduler:
+  warmup: True  # 5 epoches, cosine warmup, init_lir=0.00001 in default
+  decay_rate: 0.1
+#  decay_list: [90, 120]
+  decay_list: [15, 20]
+
+
+trainer:
+#  max_epoch: 140
+  max_epoch: 150
+#  max_epoch: 500
+#  max_epoch: 200
+  eval_start: 1
+  eval_frequency: 1000 # evaluation interval (in epoch)
+#  save_frequency: 10 # checkpoint save interval (in epoch)
+  save_frequency: 1 # checkpoint save interval (in epoch)
+#  disp_frequency: 200 # display interval (in batch)
+  disp_frequency: 50 # display interval (in batch)
+#  log_dir: 'log_waymo'
+#  out_dir: 'outputs_waymo'
+#  log_dir: 'log_waymo_1'
+#  out_dir: 'outputs_waymo_1'
+  log_dir: 'log_waymo_2'
+  out_dir: 'outputs_waymo_2'
+  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_42.pth'
+
+
+tester:
+  threshold: 0.2  # confidence filter
+#  threshold: 0.3  # confidence filter
+#  threshold: 0.05  # confidence filter
+#  threshold: 0.4  # confidence filter
+#  threshold: 0.1  # confidence filter
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_1/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_RoI19/checkpoints/checkpoint_epoch_10.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_1/checkpoints/checkpoint_epoch_120.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_reproduce_abla_base_noc_fix_depthBug_weighted_loss_nocUncern_RoIAlign_InsDepth_Uncern_removeOrgDepth_fixInferDepth_v2_removeGeo_300_LogDepth_test_car_newNet2_aux_2/checkpoints/checkpoint_epoch_130.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_reproduce_abla_base_noc_fix_depthBug_weighted_loss_nocUncern_RoIAlign_InsDepth_Uncern_removeOrgDepth_fixInferDepth_v2_removeGeo_300_LogDepth_test_car_newNet2_aux_2/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_largeScaleShift_EnlargeNet_1/checkpoints/checkpoint_epoch_150.pth'
+
+#  conf ablation
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_insUncerWithSacleAug/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_grid_AugTrans_Un_1/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_allSup/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_40.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_30.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_35.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_25.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_20.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_23.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_41.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_1/checkpoints/checkpoint_epoch_42.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_6.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_12.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_14.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_15.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_16.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_19.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_24.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_25.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_30.pth'
+  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_waymo_2/checkpoints/checkpoint_epoch_34.pth'
+#  out_dir: './outputs_tmp'
+#  out_dir: './outputs_tmp2'
+#  out_dir: './outputs_abla'
+  out_dir: './outputs_waymo_2'
+
+
+

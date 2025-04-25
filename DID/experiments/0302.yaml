@@ -1,0 +1,232 @@
+random_seed: 222
+#random_seed: 333
+
+dataset:
+  type: 'kitti'
+#  data_dir: 'KITTI'
+#  data_dir: 'KITTI_ssd'
+  data_dir: 'KITTI_pvc'
+#  root_dir: '/private/pengliang/GUPNet_master/GUPNet-main'
+  root_dir: '/pvc_user/pengliang/GUPNet_master/GUPNet-main'
+#  root_dir: '/private_data/personal/pengliang/GUPNet_master/GUPNet-main'
+#  batch_size: 64
+#  batch_size: 8
+#  batch_size: 32
+  batch_size: 16
+#  batch_size: 2
+#  batch_size: 4
+  class_merging: False
+  use_dontcare: False
+  use_3d_center: True
+  writelist: ['Car','Pedestrian','Cyclist']
+#  writelist: ['Car']
+  random_flip: 0.5
+  random_crop: 0.5
+#  random_crop: -0.1
+  scale: 0.4
+  shift: 0.1
+#  scale: 0.6
+#  shift: 0.2
+#  scale: 0.3
+#  shift: 0.2
+#  scale: 0.7
+#  shift: 0.3
+
+model:
+  type: 'gupnet'
+  backbone: 'dla34'
+  neck: 'DLAUp'
+
+optimizer:
+  type: 'adam'
+  lr: 0.00125
+  weight_decay: 0.00001
+
+lr_scheduler:
+  warmup: True  # 5 epoches, cosine warmup, init_lir=0.00001 in default
+  decay_rate: 0.1
+  decay_list: [90, 120]
+
+
+trainer:
+#  max_epoch: 140
+#  max_epoch: 150
+  max_epoch: 500
+#  max_epoch: 300
+  eval_start: 90
+  eval_frequency: 10 # evaluation interval (in epoch)
+  save_frequency: 10 # checkpoint save interval (in epoch)
+  disp_frequency: 200 # display interval (in batch)
+#  log_dir: 'log_ablation_full'
+#  out_dir: 'outputs_ablation_full'
+#  log_dir: 'log_ablation_full_1'
+#  out_dir: 'outputs_ablation_full_1'
+#  log_dir: 'log_ablation_noAffineAug'
+#  out_dir: 'outputs_ablation_noAffineAug'
+#  log_dir: 'log_ablation_scaleOffset'
+#  out_dir: 'outputs_ablation_scaleOffset'
+#  log_dir: 'log_ablation_noScaleVisual'
+#  out_dir: 'outputs_ablation_noScaleVisual'
+#  log_dir: 'log_ablation_onlyOffsetUncern'
+#  out_dir: 'outputs_ablation_onlyOffsetUncern'
+#  log_dir: 'log_ablation_onlyVisualUncern'
+#  out_dir: 'outputs_ablation_onlyVisualUncern'
+#  log_dir: 'log_ablation_noAnyUncern'
+#  out_dir: 'outputs_ablation_noAnyUncern'
+#  log_dir: 'log_ablation_base'
+#  out_dir: 'outputs_ablation_base'
+#  log_dir: 'log_ablation_RoI9'
+#  out_dir: 'outputs_ablation_RoI9'
+#  log_dir: 'log_ablation_RoI13'
+#  out_dir: 'outputs_ablation_RoI13'
+#  log_dir: 'log_ablation_RoI19'
+#  out_dir: 'outputs_ablation_RoI19'
+#  log_dir: 'log_ablation_RoI5'
+#  out_dir: 'outputs_ablation_RoI5'
+#  log_dir: 'log_ablation_RoI3'
+#  out_dir: 'outputs_ablation_RoI3'
+#  log_dir: 'log_ablation_RoI2'
+#  out_dir: 'outputs_ablation_RoI2'
+#  log_dir: 'log_ablation_full_RoI7'
+#  out_dir: 'outputs_ablation_full_RoI7'
+#  log_dir: 'log_linearDepth'
+#  out_dir: 'outputs_linearDepth'
+#  log_dir: 'log_linearDepth_1'
+#  out_dir: 'outputs_linearDepth_1'
+#  log_dir: 'log_linearDepth_largeScaleShift'
+#  out_dir: 'outputs_linearDepth_largeScaleShift'
+#  log_dir: 'log_linearDepth_largeScaleShift_1'
+#  out_dir: 'outputs_linearDepth_largeScaleShift_1'
+#  log_dir: 'log_largeScaleShift_EnlargeNet'
+#  out_dir: 'outputs_largeScaleShift_EnlargeNet'
+#  log_dir: 'log_largeScaleShift_EnlargeNet_1'
+#  out_dir: 'outputs_largeScaleShift_EnlargeNet_1' current best test 150
+#  log_dir: 'log_smallScaleShift_EnlargeNet'
+#  out_dir: 'outputs_smallScaleShift_EnlargeNet'
+#  log_dir: 'log_smallScaleShift_EnlargeNet_1'
+#  out_dir: 'outputs_smallScaleShift_EnlargeNet_1'
+#  log_dir: 'log_largeScaleShift_V2_EnlargeNet'
+#  out_dir: 'outputs_largeScaleShift_V2_EnlargeNet'
+#  log_dir: 'log_largeScaleShift_V2_EnlargeNet_1'
+#  out_dir: 'outputs_largeScaleShift_V2_EnlargeNet_1'
+#  log_dir: 'log_largeScaleShift_V2_EnlargeNet_2'
+#  out_dir: 'outputs_largeScaleShift_V2_EnlargeNet_2'
+#  log_dir: 'log_largeScaleShift_V2_EnlargeNet_3'
+#  out_dir: 'outputs_largeScaleShift_V2_EnlargeNet_3'
+#  log_dir: 'log_ablation_RoI7_Insdepth'
+#  out_dir: 'outputs_ablation_RoI7_Insdepth'
+#  log_dir: 'log_ablation_AffAugNotrans'
+#  out_dir: 'outputs_ablation_AffAugNotrans'
+#  log_dir: 'log_ablation_AffAugNotrans_tmp'
+#  out_dir: 'outputs_ablation_AffAugNotrans_tmp'
+
+#  log_dir: 'log_ablation_insUncerWithSacleAug'    exp h
+#  out_dir: 'outputs_ablation_insUncerWithSacleAug'    exp h
+#  log_dir: 'log_ablation_insUncerNoSacleAug'
+#  out_dir: 'outputs_ablation_insUncerNoSacleAug'
+#  log_dir: 'log_ablation_insNoUncerWithSacleAug'    repeat
+#  out_dir: 'outputs_ablation_insNoUncerWithSacleAug'   repeat
+#  log_dir: 'log_ablation_insNoUncerNoSacleAug'      repeat
+#  out_dir: 'outputs_ablation_insNoUncerNoSacleAug'    repeat
+
+
+#exp a
+#  log_dir: 'log_ablation_naive'
+#  out_dir: 'outputs_ablation_naive'
+#exp d
+#  log_dir: 'log_ablation_naiveAug'
+#  out_dir: 'outputs_ablation_naiveAug'
+#exp b
+#  log_dir: 'log_ablation_grid'
+#  out_dir: 'outputs_ablation_gird'
+#  log_dir: 'log_ablation_grid_1'
+#  out_dir: 'outputs_ablation_gird_1'
+#  log_dir: 'log_ablation_grid_2'
+#  out_dir: 'outputs_ablation_gird_2'
+#  log_dir: 'log_debug'
+#  out_dir: 'outputs_debug'
+#exp c
+#  log_dir: 'log_ablation_grid_dec'
+#  out_dir: 'outputs_ablation_gird_dec'
+#exp e
+#  log_dir: 'log_ablation_grid_dec_naiveAug'
+#  out_dir: 'outputs_ablation_gird_dec_naiveAug'
+#exp l
+#  log_dir: 'log_ablation_grid_naiveAug'
+#  out_dir: 'outputs_ablation_gird_naiveAug'
+#exp p
+#  log_dir: 'log_ablation_grid_AugTrans_Un'
+#  out_dir: 'outputs_ablation_gird_AugTrans_Un'
+#  log_dir: 'log_ablation_grid_AugTrans_Un_1'
+#  out_dir: 'outputs_ablation_gird_AugTrans_Un_1'
+
+#  log_dir: 'log_ablation_full_allSup'
+#  out_dir: 'outputs_ablation_full_allSup'
+#  log_dir: 'log_ablation_full_allSup_1'
+#  out_dir: 'outputs_ablation_full_allSup_1'
+#  log_dir: 'log_ablation_full_allSup_2'
+#  out_dir: 'outputs_ablation_full_allSup_2'
+
+#  log_dir: 'log_ablation_full_caddn'
+#  out_dir: 'outputs_ablation_full_caddn'
+#  log_dir: 'log_ablation_full_caddn_1'
+#  out_dir: 'outputs_ablation_full_caddn_1'
+#  log_dir: 'log_ablation_full_rep'
+#  out_dir: 'outputs_ablation_full_rep'
+#  log_dir: 'log_ablation_full_rep_1'
+#  out_dir: 'outputs_ablation_full_rep_1'
+
+#  log_dir: 'log_rep_0521'
+#  out_dir: 'outputs_rep_0521'
+#  log_dir: 'log_rep_0521_1'
+#  out_dir: 'outputs_rep_0521_1'
+#  log_dir: 'log_rep_0521_2'
+#  out_dir: 'outputs_rep_0521_2' # 3 gpu3 train again
+#  log_dir: 'log_rep_0521_3'
+#  out_dir: 'outputs_rep_0521_3' # add wight init
+#  log_dir: 'log_rep_0521_3_size'
+#  out_dir: 'outputs_rep_0521_3_size'
+#  log_dir: 'log_rep_0521_3_size_dd3d'
+#  out_dir: 'outputs_rep_0521_3_size_dd3d' # 3gpu b32
+#  log_dir: 'log_rep_0521_3_1'
+#  out_dir: 'outputs_rep_0521_3_1' # add wight init
+#  log_dir: 'log_rep_0521_3_NoKptFar'
+#  out_dir: 'outputs_rep_0521_3_NoKptFar' # add wight init
+#  log_dir: 'log_rep_0521_3_NoKptFar_1'
+#  out_dir: 'outputs_rep_0521_3_NoKptFar_1' # add wight init
+#  log_dir: 'log_rep_0521_3_NoKptFar_aug'
+#  out_dir: 'outputs_rep_0521_3_NoKptFar_aug' # add wight init
+#  log_dir: 'log_rep_0521_3_NoKptFar_aug_1'
+#  out_dir: 'outputs_rep_0521_3_NoKptFar_aug_1'
+#  log_dir: 'log_rep_0521_3_NoKptFar_aug_2'
+#  out_dir: 'outputs_rep_0521_3_NoKptFar_aug_2'
+#  log_dir: 'log_rep_0521_3_NoKptFar_aug_3'
+#  out_dir: 'outputs_rep_0521_3_NoKptFar_aug_3'
+  log_dir: 'log_rep_0521_3_NoKptFar_aug_4'
+  out_dir: 'outputs_rep_0521_3_NoKptFar_aug_4'
+
+tester:
+  threshold: 0.2  # confidence filter
+#  threshold: 0.3  # confidence filter
+#  threshold: 0.05  # confidence filter
+#  threshold: 0.4  # confidence filter
+#  threshold: 0.1  # confidence filter
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_1/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_RoI19/checkpoints/checkpoint_epoch_10.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_1/checkpoints/checkpoint_epoch_120.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_reproduce_abla_base_noc_fix_depthBug_weighted_loss_nocUncern_RoIAlign_InsDepth_Uncern_removeOrgDepth_fixInferDepth_v2_removeGeo_300_LogDepth_test_car_newNet2_aux_2/checkpoints/checkpoint_epoch_130.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_reproduce_abla_base_noc_fix_depthBug_weighted_loss_nocUncern_RoIAlign_InsDepth_Uncern_removeOrgDepth_fixInferDepth_v2_removeGeo_300_LogDepth_test_car_newNet2_aux_2/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_largeScaleShift_EnlargeNet_1/checkpoints/checkpoint_epoch_150.pth'
+
+#  conf ablation
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_insUncerWithSacleAug/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_grid_AugTrans_Un_1/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_allSup/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_rep/checkpoints/checkpoint_epoch_110.pth'
+  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_rep_0521_3/checkpoints/checkpoint_epoch_110.pth'
+#  out_dir: './outputs_tmp'
+#  out_dir: './outputs_tmp2'
+  out_dir: './outputs_abla_rep'
+
+
+

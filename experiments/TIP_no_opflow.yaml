@@ -1,0 +1,50 @@
+random_seed: 333
+
+dataset:
+  type: 'kitti'
+  data_dir: 'KITTI_pvc'
+  root_dir: '/pvc_user/chenghaoran/tempM3D'
+  batch_size: 16
+  class_merging: False
+  use_dontcare: False
+  use_3d_center: True
+  writelist: ['Car','Pedestrian','Cyclist']
+  # writelist: ['Car']
+  random_flip: 0.5
+  random_crop: 0.5
+  scale: 0.6
+  shift: 0.2
+model:
+  type: 'gupnet'
+  backbone: 'dla34'
+  neck: 'DLAUp'
+
+optimizer:
+  type: 'adam'
+  lr: 0.00125
+  weight_decay: 0.00001
+
+lr_scheduler:
+  warmup: True  # 5 epoches, cosine warmup, init_lir=0.00001 in default
+  decay_rate: 0.1
+  decay_list: [90, 120]
+
+eval_split: 'val'
+
+trainer:
+  max_epoch: 200
+  eval_start: 90
+  eval_frequency: 10 # evaluation interval (in epoch)
+  save_frequency: 10 # checkpoint save interval (in epoch)
+  disp_frequency: 200 # display interval (in batch)
+  log_dir: 'log'
+  out_dir: 'out'
+
+
+tester:
+  threshold: 0.2  # confidence filter
+  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_allSup/checkpoints/checkpoint_epoch_140.pth'
+  out_dir: './outputs_test_tmp'
+
+
+

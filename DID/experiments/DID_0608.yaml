@@ -1,0 +1,267 @@
+random_seed: 222
+
+
+dataset:
+  type: 'kitti'
+  data_dir: 'KITTI_pvc'
+  root_dir: '/pvc_user/pengliang/DID/DID-main'
+#  batch_size: 32
+  batch_size: 16
+#  batch_size: 2
+  class_merging: False
+  use_dontcare: False
+  use_3d_center: True
+  writelist: ['Car']
+#  writelist: ['Car','Pedestrian','Cyclist']
+  random_flip: 0.5
+  random_crop: 0.5
+#  random_crop: 0.7
+#  random_crop: 0.8
+  scale: 0.4
+  shift: 0.1
+#  scale: 0.6
+#  shift: 0.2
+
+  pre_frames: 2
+model:
+  type: 'gupnet'
+  backbone: 'dla34'
+  neck: 'DLAUp'
+
+optimizer:
+  type: 'adam'
+  lr: 0.00125
+  weight_decay: 0.00001
+
+lr_scheduler:
+  warmup: True  # 5 epoches, cosine warmup, init_lir=0.00001 in default
+  decay_rate: 0.1
+  decay_list: [90, 120]
+#  decay_list: [90, 150]
+#  decay_list: [60, 100]
+#  decay_list: [70, 100]
+#  decay_list: [80, 110]
+#  decay_list: [100, 130]
+#  decay_list: [110, 140]
+
+
+trainer:
+  max_epoch: 200
+  eval_start: 90
+#  eval_start: 70
+  eval_frequency: 10 # evaluation interval (in epoch)
+  save_frequency: 10 # checkpoint save interval (in epoch)
+  disp_frequency: 200 # display interval (in batch)
+#  log_dir: 'log_DID'
+#  out_dir: 'outputs_DID'
+#  log_dir: 'log_DID_crop7'
+#  out_dir: 'outputs_DID_crop7'
+#  log_dir: 'log_DID_crop8'
+#  out_dir: 'outputs_DID_crop8'
+#  log_dir: 'log_DID_crop8_41'
+#  out_dir: 'outputs_DID_crop8_41'
+#  log_dir: 'log_DID_crop8_41_1'
+#  out_dir: 'outputs_DID_crop8_41_1'
+#  log_dir: 'log_DID_crop8_41_b16'
+#  out_dir: 'outputs_DID_crop8_41_b16'
+#  log_dir: 'log_DID_crop8_41_b16_1'
+#  out_dir: 'outputs_DID_crop8_41_b16_1'
+
+#  log_dir: 'log_DID_b16_UpDepthLoss'
+#  out_dir: 'outputs_DID_UpDepthLoss'
+#  log_dir: 'log_DID_b16_UpDepthLoss_1'
+#  out_dir: 'outputs_DID_UpDepthLoss_1'
+#  log_dir: 'log_DID_b16_UpDepthLoss_2'
+#  out_dir: 'outputs_DID_UpDepthLoss_2'
+#  log_dir: 'log_DID_b16_UpDepthLoss_3'
+#  out_dir: 'outputs_DID_UpDepthLoss_3'
+#  log_dir: 'log_DID_b16_UpDepthLossNoInit'
+#  out_dir: 'outputs_DID_UpDepthLossNoInit'
+#  log_dir: 'log_DID_b16_UpDepthLossFixDepthWeight'
+#  out_dir: 'outputs_DID_UpDepthLossFixDepthWeight'
+#  log_dir: 'log_DID_b16_UpDepthLossNet'
+#  out_dir: 'outputs_DID_UpDepthLossNet'
+#  log_dir: 'log_DID_b16_UpDepthLossNet_1'
+#  out_dir: 'outputs_DID_UpDepthLossNet_1'
+#  log_dir: 'log_DID_b16_UpDepthLossNet_2'
+#  out_dir: 'outputs_DID_UpDepthLossNet_2'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2'
+#  out_dir: 'outputs_DID_UpDepthLossNet2'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_1'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_1'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_Flow'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_Flow'
+
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_Flow12_1'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_Flow12_1'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_Flow12_2'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_Flow12_2'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_Flow13'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_Flow13'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_Flow13_1'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_Flow13_1'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_FlowCat'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_FlowCat'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_FlowCat_1'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_FlowCat_1'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_FlowFuseLast'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_FlowFuseLast'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_FlowFuseLast_1'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_FlowFuseLast_1'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_2'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_2'
+#  log_dir: 'log_DID_b16_UpDepthLossNet3'
+#  out_dir: 'outputs_DID_UpDepthLossNet3'
+#  log_dir: 'log_DID_b16_UpDepthLossNet3_1'
+#  out_dir: 'outputs_DID_UpDepthLossNet3_1'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_3'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_3'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_4'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_4'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2_5'
+#  out_dir: 'outputs_DID_UpDepthLossNet2_5'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN'
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_1'
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_1'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_2'
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_2'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_3'
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_3'
+
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_4'
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_4'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_5'
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_5'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_6'
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_6'
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_7' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_7' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_8' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_8' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_9' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_9' # no dataloader init
+
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_2' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_2' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_3' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_3' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_4' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_4' # no dataloader init
+
+
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_2' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_2' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_3' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_3' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_4' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_4' # no dataloader init
+
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_2' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_2' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13_2' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13_2' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_EnlargeNet' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_EnlargeNet' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_EnlargeNet_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_EnlargeNet_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay2' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay2' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay2_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay2_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay3' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay3' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay4' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay4' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay5' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay5' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay6' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor13Fix_decay6' # no dataloader init
+
+
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor12Fix' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor12Fix' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_aug62_factor12Fix_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_aug62_factor12Fix_1' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_factor12Fix' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_factor12Fix' # no dataloader init
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_Flow_test_factor12Fix_1' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_Flow_test_factor12Fix_1' # no dataloader init
+
+#  log_dir: 'log_DID_b16_UpDepthLossNet2NoBN_test' # no dataloader init
+#  out_dir: 'outputs_DID_UpDepthLossNet2NoBN_test' # no dataloader init
+
+#  log_dir: 'log_DID_b16_TempM3D' # (factor: 2/3)
+#  out_dir: 'outputs_DID_TempM3D'
+#  log_dir: 'log_DID_b16_TempM3D_frame1'
+#  out_dir: 'outputs_DID_TempM3D_frame1'
+#  log_dir: 'log_DID_b16_TempM3D_frame1_1'
+#  out_dir: 'outputs_DID_TempM3D_frame1_1'
+#  log_dir: 'log_DID_b16_TempM3D_NoMask'
+#  out_dir: 'outputs_DID_TempM3D_NoMask'
+  log_dir: 'log_DID_b16_TempM3D_NoMaskWrap'
+  out_dir: 'outputs_DID_TempM3D_NoMaskWrap'
+
+
+#  log_dir: 'log_DID_b16_TempM3D_factor12'
+#  out_dir: 'outputs_DID_TempM3D_factor12'
+#  log_dir: 'log_DID_b16_TempM3D_factor13'
+#  out_dir: 'outputs_DID_TempM3D_factor13'
+#  log_dir: 'log_DID_b16_TempM3D_factor23'
+#  out_dir: 'outputs_DID_TempM3D_factor23'
+
+
+#  log_dir: 'tmp'
+#  out_dir: 'tmp'
+
+#  log_dir: 'log_DID_Flow'
+#  out_dir: 'outputs_DID_Flow'
+#  log_dir: 'log_DID_Net_Flow'
+#  out_dir: 'outputs_DID_Net_Flow'
+#  log_dir: 'log_DID_Net_Flow_2'
+#  out_dir: 'outputs_DID_Net_Flow_2'
+#  log_dir: 'log_DID_Net_FlowOrg'
+#  out_dir: 'outputs_DID_Net_FlowOrg'
+
+#  log_dir: 'log_DID_crop8_41_allCls'
+#  out_dir: 'outputs_DID_crop8_41_allCls'
+#  log_dir: 'log_DID_crop8_41_Car'
+#  out_dir: 'outputs_DID_crop8_41_Car'
+
+#CUDA_VISIBLE_DEVICES=0,1,2,3 python tools/train_val.py --config experiments/DID_0608.yaml
+#CUDA_VISIBLE_DEVICES=0,1,2,3 python tools/train_with_test.py --config experiments/DID_0608.yaml
+
+
+tester:
+  threshold: 0.2  # confidence filter
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_ablation_full_allSup/checkpoints/checkpoint_epoch_120.pth'
+#  resume_model: '/pvc_user/pengliang/DID/DID-main/code/log_DID_b16_UpDepthLossNet2NoBN_2/checkpoints/checkpoint_epoch_120.pth'
+  resume_model: '/pvc_user/pengliang/DID/DID-main/code/log_DID_b16_UpDepthLossNet2NoBN_Flow_test_1/checkpoints/checkpoint_epoch_140.pth'
+  out_dir: './outputs_test_tmp'
+
+
+

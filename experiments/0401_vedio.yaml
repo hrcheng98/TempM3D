@@ -1,0 +1,243 @@
+random_seed: 222
+
+dataset:
+  type: 'kitti'
+#  data_dir: 'KITTI'
+#  data_dir: 'KITTI_ssd'
+  data_dir: 'KITTI_pvc'
+#  root_dir: '/private/pengliang/GUPNet_master/GUPNet-main'
+  root_dir: '/pvc_user/pengliang/GUPNet_master/GUPNet-main'
+#  batch_size: 23
+#  batch_size: 9
+#  batch_size: 12
+#  batch_size: 16
+#  batch_size: 6
+  batch_size: 2
+#  batch_size: 20
+#  batch_size: 2
+#  batch_size: 16
+#  batch_size: 2
+#  batch_size: 2
+#  batch_size: 8
+#  batch_size: 2
+#  batch_size: 32
+#  batch_size: 16
+#  batch_size: 8
+#  batch_size: 1
+#  batch_size: 4
+  class_merging: False
+  use_dontcare: False
+  use_3d_center: True
+  writelist: ['Car','Pedestrian','Cyclist']
+#  writelist: ['Car']
+  random_flip: 0.5
+  random_crop: 0.5
+  scale: 0.4
+  shift: 0.1
+#  scale: 0.6
+#  shift: 0.2
+
+model:
+  type: 'gupnet'
+  backbone: 'dla34'
+  neck: 'DLAUp'
+
+optimizer:
+  type: 'adam'
+  lr: 0.00125
+#  lr: 0.0006
+  weight_decay: 0.00001
+
+lr_scheduler:
+  warmup: True  # 5 epoches, cosine warmup, init_lir=0.00001 in default
+  decay_rate: 0.1
+  decay_list: [90, 120]
+
+
+trainer:
+  max_epoch: 200
+#  eval_start: 90
+  eval_start: 10
+  eval_frequency: 10 # evaluation interval (in epoch)
+  save_frequency: 10 # checkpoint save interval (in epoch)
+  disp_frequency: 200 # display interval (in batch)
+#  log_dir: 'log_vedio'
+#  out_dir: 'outputs_vedio'
+#  log_dir: 'log_vedio_1'
+#  out_dir: 'outputs_vedio_1'
+#  log_dir: 'log_b6'
+#  out_dir: 'outputs_b6'
+#  log_dir: 'log_b32'
+#  out_dir: 'outputs_b32'
+#  log_dir: 'log_vedio_offset'
+#  out_dir: 'outputs_vedio_offset'
+#  log_dir: 'log_vedio_offset_b20'
+#  out_dir: 'outputs_vedio_offset_b20'
+#  log_dir: 'log_vedio_offset_b20_1'
+#  out_dir: 'outputs_vedio_offset_b20_1'
+#  log_dir: 'log_vedio_offset_b5'
+#  out_dir: 'outputs_vedio_offset_b5'
+#  log_dir: 'log_vedio_offset_flow_fixFlip'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_att'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_att'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noDetach'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noDetach'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk_noDetach'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk_noDetach'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_2'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_2'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_3'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_3'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_4'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_4'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_2'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_2'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_fuseAtt'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_fuseAtt'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV3'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV3'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV3_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV3_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_2'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_2'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_3'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_3'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_catFlow'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_catFlow'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_catFlow_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_catFlow_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_catFlowOrgCoor'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_catFlowOrgCoor'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_catFlowOrgCoor_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warpV4_catFlowOrgCoor_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow_att'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow_att'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow_att_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow_att_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlowCoor'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlowCoor'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlowCoor_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlowCoor_1'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlowCoor_AuxCorner'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlowCoor_AuxCorner'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlowCoor_AuxCorner_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlowCoor_AuxCorner_1'
+
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverse_test'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow_test'
+#  log_dir: 'log_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverse_test_1'
+#  out_dir: 'outputs_vedio_offset_flow_fixFlip_noBk3Frame_UpFusion_warp_catInverseFlow_test_1'
+#  log_dir: 'log_tmp_test2'
+#  out_dir: 'outputs_tmp_test2'
+#  log_dir: 'log_flow_gup_test'
+#  out_dir: 'outputs_flow_gup_test'
+#  log_dir: 'log_flow_gup_test_1'
+#  out_dir: 'outputs_flow_gup_test_1'
+#  log_dir: 'log_flow_gup_base'
+#  out_dir: 'outputs_flow_gup_base'
+#  log_dir: 'log_flow_gup_base_1'
+#  out_dir: 'outputs_flow_gup_base_1'
+#  log_dir: 'log_flow_gup_base_finetuneFlow'
+#  out_dir: 'outputs_flow_gup_base_finetuneFlow'
+#  log_dir: 'log_flow_gup_base_finetuneFlow_1'
+#  out_dir: 'outputs_flow_gup_base_finetuneFlow_1'
+#  log_dir: 'log_flow_gup_base_finetuneFlow_2'
+#  out_dir: 'outputs_flow_gup_base_finetuneFlow_2'
+#  log_dir: 'log_flow_gup_base_finetuneFlow_3'
+#  out_dir: 'outputs_flow_gup_base_finetuneFlow_3'
+#  log_dir: 'log_flow_gup_Flow_fuse3d'
+#  out_dir: 'outputs_flow_gup_Flow_fuse3d'
+#  log_dir: 'log_flow_gup_Flow_fuse3d_1'
+#  out_dir: 'outputs_flow_gup_Flow_fuse3d_1'
+#  log_dir: 'log_flow_gup_Flow_fuse3d_noFlow'
+#  out_dir: 'outputs_flow_gup_Flow_fuse3d_noFlow'
+#  log_dir: 'log_flow_gup_Flow_fuse3d_noFlow_1'
+#  out_dir: 'outputs_flow_gup_Flow_fuse3d_noFlow_1'
+#  log_dir: 'log_flow_gup_Flow_fuse3d_FlowV4'
+#  out_dir: 'outputs_flow_gup_Flow_fuse3d_FlowV4'
+#  log_dir: 'log_flow_gup_Flow_fuse3d_FlowV4_1'
+#  out_dir: 'outputs_flow_gup_Flow_fuse3d_FlowV4_1'
+#  log_dir: 'log_flow_gup_Flow_fuse3d_FlowNormCatCenter'
+#  out_dir: 'outputs_flow_gup_Flow_fuse3d_FlowNormCatCenter'
+#  log_dir: 'log_flow_gup_FlowNorm'
+#  out_dir: 'outputs_flow_gup_FlowNorm'
+#  log_dir: 'log_flow_gup_FlowWarpDepth'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepth'
+#  log_dir: 'log_flow_gup_FlowWarpDepth_1'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepth_1'
+#  log_dir: 'log_flow_gup_FlowWarpDepth_2'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepth_2'
+#  log_dir: 'log_flow_gup_FlowWarpDepthXY'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepthXY'
+#  log_dir: 'log_flow_gup_FlowWarpDepthXY_1'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepthXY_1'
+#  log_dir: 'log_flow_gup_FlowWarpDepthXY_UpDepth'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepthXY_UpDepth'
+#  log_dir: 'log_flow_gup_FlowWarpDepthXY_UpDepth_1'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepthXY_UpDepth_1'
+#  log_dir: 'log_flow_gup_FlowWarpDepthXY_UpDepth_fusion'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepthXY_UpDepth_fusion'
+#  log_dir: 'log_flow_gup_FlowWarpDepthXY_UpDepth_fusion_debugLidarDepth'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepthXY_UpDepth_fusion_debugLidarDepth'
+
+
+#  log_dir: 'log_flow_gup_FlowWarpDepthXY_UpDepth_fusion_1'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepthXY_UpDepth_fusion_1'
+#  log_dir: 'log_flow_gup_FlowWarpDepthXY_UpDepth_fusion_2'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepthXY_UpDepth_fusion_2'
+
+#  log_dir: 'log_flow_gup_FlowWarpDepth'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepth'
+#  log_dir: 'log_flow_gup_FlowWarpDepth_1'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepth_1'
+#  log_dir: 'log_flow_gup_FlowWarpDepth_2'
+#  out_dir: 'outputs_flow_gup_FlowWarpDepth_2'
+
+#  log_dir: 'log_flow_gup_b6g2'
+#  out_dir: 'outputs_flow_b6g2'
+#  log_dir: 'log_flow_gup_FlowWarpBKMask'
+#  out_dir: 'outputs_flow_gup_FlowWarpBKMask'
+  log_dir: 'log_flow_gup_FlowWarpBKMask_1'
+  out_dir: 'outputs_flow_gup_FlowWarpBKMask_1'
+#  log_dir: 'log_flow_gup_FlowWarpBKMaskWithOrg'
+#  out_dir: 'outputs_flow_gup_FlowWarpBKMaskWithOrg'
+#  log_dir: 'log_flow_gup_FlowWarpBKMaskWithOrg_1'
+#  out_dir: 'outputs_flow_gup_FlowWarpBKMaskWithOrg_1'
+
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_flow_gup_FlowWarpDepthXY_1/checkpoints/checkpoint_epoch_110.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_flow_gup_FlowWarpDepth_1/checkpoints/checkpoint_epoch_10.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_flow_gup_base_1/checkpoints/checkpoint_epoch_200.pth'
+
+
+tester:
+  threshold: 0.2  # confidence filter
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_vedio_offset_b5/checkpoints/checkpoint_epoch_140.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_flow_gup_base/checkpoints/checkpoint_epoch_10.pth'
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_flow_gup_FlowWarpDepthXY_1/checkpoints/checkpoint_epoch_110.pth'
+  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_flow_gup_FlowWarpDepthXY_UpDepth/checkpoints/checkpoint_epoch_20.pth'
+
+#  out_dir: './outputs_tmp'
+#  out_dir: './outputs_tmp2'
+  out_dir: './outputs_abla'
+
+
+

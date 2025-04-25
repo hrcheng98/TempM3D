@@ -1,0 +1,102 @@
+random_seed: 222
+
+dataset:
+  type: 'kitti'
+#  data_dir: 'KITTI'
+#  data_dir: 'KITTI_ssd'
+  data_dir: 'KITTI_pvc'
+#  root_dir: '/private/pengliang/GUPNet_master/GUPNet-main'
+#  root_dir: '/pvc_user/pengliang/GUPNet_master/GUPNet-main'
+  root_dir: '/pvc_user/pengliang/DID/DID-main'
+#  batch_size: 23
+#  batch_size: 9
+#  batch_size: 12
+#  batch_size: 16
+#  batch_size: 1
+#  batch_size: 6
+#  batch_size: 2
+#  batch_size: 20
+#  batch_size: 2
+  batch_size: 16
+#  batch_size: 2
+#  batch_size: 2
+#  batch_size: 8
+#  batch_size: 2
+#  batch_size: 32
+#  batch_size: 16
+#  batch_size: 8
+#  batch_size: 1
+#  batch_size: 4
+  class_merging: False
+  use_dontcare: False
+  use_3d_center: True
+  writelist: ['Car','Pedestrian','Cyclist']
+  # writelist: ['Car']
+  random_flip: 0.5
+  random_crop: 0.5
+  scale: 0.4
+  shift: 0.1
+#  scale: 0.6
+#  shift: 0.2
+
+model:
+  type: 'gupnet'
+  backbone: 'dla34'
+  neck: 'DLAUp'
+
+optimizer:
+  type: 'adam'
+  lr: 0.00125
+#  lr: 0.0006
+  weight_decay: 0.00001
+
+lr_scheduler:
+  warmup: True  # 5 epoches, cosine warmup, init_lir=0.00001 in default
+  decay_rate: 0.1
+  decay_list: [90, 120]
+
+
+trainer:
+  max_epoch: 300
+#  max_epoch: 150
+  eval_start: 90
+#  eval_start: 10
+  eval_frequency: 10 # evaluation interval (in epoch)
+  save_frequency: 10 # checkpoint save interval (in epoch)
+  disp_frequency: 200 # display interval (in batch)
+#  log_dir: 'log_flow_dipDown'
+#  out_dir: 'outputs_flow_dipDown'
+#  log_dir: 'log_flow_1101'
+#  out_dir: 'outputs_flow_1101'
+#  log_dir: 'log_flow_dip'
+#  out_dir: 'outputs_flow_dip'
+#  log_dir: 'log_flow_dip_1'
+#  out_dir: 'outputs_flow_dip_1'
+
+#  log_dir: 'log_flow_base'
+#  out_dir: 'outputs_flow_base'
+#  log_dir: 'log_flow_base_1'
+#  out_dir: 'outputs_flow_base_1'
+#  log_dir: 'log_flow_base_2'
+#  out_dir: 'outputs_flow_base_2'
+
+
+  log_dir: 'log_flow_raft'
+  out_dir: 'outputs_flow_raft'
+#  log_dir: 'log_flow_raft_1'
+#  out_dir: 'outputs_flow_raft_1'
+#  log_dir: 'log_flow_raft_2'
+#  out_dir: 'outputs_flow_raft_2'
+#  log_dir: 'log_flow_raft_3'
+#  out_dir: 'outputs_flow_raft_3'
+
+
+tester:
+  threshold: 0.2  # confidence filter
+#  resume_model: '/pvc_user/pengliang/GUPNet_master/GUPNet-main/code/log_vedio_offset_b5/checkpoints/checkpoint_epoch_140.pth'
+  resume_model: '/pvc_user/pengliang/DID/DID-main/code/log_flow_raft_1/checkpoints/checkpoint_epoch_140.pth'
+
+  out_dir: './outputs_tmp'
+
+
+#  CUDA_VISIBLE_DEVICES=2,3 python tools/train_val.py --config experiments/1101_video.yaml
